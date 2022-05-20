@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const routes = require('./routes');
+const validateJWT = require('../api/auth/validateJWT');
 
 const app = express();
 
@@ -9,9 +10,10 @@ app.use(bodyParser.json());
 
 const apiRoutes = express.Router();
 
-apiRoutes.get('/api/posts', routes.getPosts);
+apiRoutes.get('/api/posts', validateJWT, routes.getPosts);
 apiRoutes.post('/api/users', routes.createUsers);
 apiRoutes.get('/api/users', routes.getUsers);
+apiRoutes.get('/api/users/:userId', validateJWT, routes.getUserById);
 apiRoutes.post('/api/login', routes.login);
 
 app.use(apiRoutes);

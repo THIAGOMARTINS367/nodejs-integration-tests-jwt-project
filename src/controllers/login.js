@@ -1,5 +1,5 @@
-const { User } = require('../models');
 const jwt = require('jsonwebtoken');
+const { User } = require('../models');
 
 /* Sua chave secreta (const secret). É com ela que os dados do seu usuário serão encriptados.
    Em projetos reais, armazene-a numa variável de ambiente e tenha cuidado com ela, pois só quem tem acesso
